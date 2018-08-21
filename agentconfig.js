@@ -49,9 +49,15 @@ router.post('/delete/:id', function(req, res, id){          // to delete the cam
     if(config.providerConfig.pubnative){                // if request is from pubnative
       pubnativecheck(req.params.id, config);
       }
+<<<<<<< HEAD
     if(config.providerConfig.adx){                      // if request is from adx
       adxcheck(req.params.id, config);                  
     }  
+=======
+    if(config.providerConfig.adx){
+      adxcheck(req.params.id, config);
+      }
+>>>>>>> be7207f1487087b998a255713c497a393ca17618
       res.send('agentconfig received');                 // sending response
   });
 
