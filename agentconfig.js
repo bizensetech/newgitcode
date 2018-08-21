@@ -6,16 +6,19 @@ var mopub = require('./mopub_exchangeconnector');
 var smaato = require('./smaato_exchangeconnector');
 var pubnative = require('./pubnative_exchangeconnector');
 var adx = require('./adx_exchangeconnector');
+var adcolony = require('./adcolony_exchangeconnector');
 
 var mopubcheck = mopub.isCampaignValid;           
 var smaatocheck = smaato.isCampaignValid;
 var pubnativecheck = pubnative.isCampaignValid;
 var adxcheck = adx.isCampaignValid;
+var adcolonycheck = adcolony.isCampaignValid;
 
 var smaatodeleteId = smaato.deleteId;
 var mopubdeleteId = mopub.deleteId;
 var pubnativedeleteId = pubnative.deleteId;
 var adxdeleteId = adx.deleteId;
+var adcolonydeleteId = adcolony.deleteId;
 
 var Agentconfig = {};
 
@@ -25,6 +28,7 @@ router.post('/delete/:id', function(req, res, id){          // to delete the cam
   mopubdeleteId(req.params.id);
   pubnativedeleteId(req.params.id);
   adxdeleteId(req.params.id);
+  adcolonydeleteId(req.params.id);
   res.send('agentconfig deleted : '+ req.params.id);  
 });
 
@@ -49,21 +53,12 @@ router.post('/delete/:id', function(req, res, id){          // to delete the cam
     if(config.providerConfig.pubnative){                // if request is from pubnative
       pubnativecheck(req.params.id, config);
       }
-<<<<<<< HEAD
-<<<<<<< HEAD
     if(config.providerConfig.adx){                      // if request is from adx
       adxcheck(req.params.id, config);                  
     }  
-=======
-    if(config.providerConfig.adx){
-      adxcheck(req.params.id, config);
-      }
->>>>>>> be7207f1487087b998a255713c497a393ca17618
-=======
-    if(config.providerConfig.adx){
-      adxcheck(req.params.id, config);
-      }
->>>>>>> be7207f1487087b998a255713c497a393ca17618
+    if(config.providerConfig.adcolony){                 // if request is from adcolony
+      adcolonycheck(req.params.id, config);
+    }
       res.send('agentconfig received');                 // sending response
   });
 
